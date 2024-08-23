@@ -33,7 +33,7 @@ export const Home = () => {
 
   useEffect(() => {
     if (!isRefetching && data) {
-      console.log('rodou aqui');
+      console.log("rodou aqui");
       setUsers((prevUsers) => [...prevUsers, ...data.users]);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -58,7 +58,11 @@ export const Home = () => {
       </header>
       <div className="div-sections">
         <FirstSection />
-        <GetBlock users={users} isLoading={isLoading} nextPage={nextPage} />
+        <GetBlock
+          users={users}
+          isLoading={isLoading || isRefetching}
+          nextPage={nextPage}
+        />
         <PostBlock refetchGetUsers={refetchGetFunction} />
       </div>
     </main>
