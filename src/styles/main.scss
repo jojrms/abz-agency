@@ -1,4 +1,7 @@
 @import './components/buttons.scss';
+@import './components/cards.scss';
+@import './components/tooltips.scss';
+@import './components/texts.scss';
 @import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap');
 
 html, body, #root{
@@ -10,4 +13,27 @@ html, body, #root{
 
 body * {
     font-family: $font-family-primary;
+};
+
+main > *:not(header){
+    max-width: 1170px;
+    margin: 0 auto;
+};
+
+section{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    & div{
+        width: fit-content;
+        height: fit-content;
+        text-align: center;
+    };
+};
+
+.div-sections{
+    display: grid;
+    gap: 140px;
+    padding-bottom: 100px;
 };

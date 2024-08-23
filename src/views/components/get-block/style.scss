@@ -1,0 +1,18 @@
+.get-block{
+    width: 100%;
+
+    > div{
+        width: 100%;
+        display: grid;
+        gap: 50px;
+
+        svg{
+            margin: auto;
+        };
+
+        button{
+            margin: auto
+        };
+    };
+    
+};

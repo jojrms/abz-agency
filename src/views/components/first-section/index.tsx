@@ -1,3 +1,5 @@
+import "./style.scss";
+
 export const FirstSection = () => {
   return (
     <section className="first-section">
