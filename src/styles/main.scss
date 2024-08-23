@@ -13,6 +13,10 @@ html, body, #root{
     background: $background-color;
 };
 
+body{
+    overflow-x: hidden;
+};
+
 body * {
     font-family: $font-family-primary;
 };

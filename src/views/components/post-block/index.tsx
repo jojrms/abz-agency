@@ -9,6 +9,7 @@ import { NewUserProps } from "../../../types/users";
 import "./style.scss";
 import { useUserPositions } from "../../../hooks/getPositions";
 import { useState } from "react";
+import { toast } from "react-toastify";
 
 const postRequestSchema = Yup.object({
   name: Yup.string()
@@ -111,12 +112,15 @@ export const PostBlock = ({ refetchGetUsers }: PostBlockProps) => {
       return data;
     } catch (error) {
       console.log(error);
+      setIsLoadingNewUser(false);
     }
   };
 
   const onSubmitForm: SubmitHandler<NewUserProps> = async (data) => {
     const newUser = await createUserFunction(data);
     if (newUser?.success) {
+      setIsLoadingNewUser(false);
+      toast("User created!", { type: "success" });
       reset();
       refetchGetUsers(1);
     }

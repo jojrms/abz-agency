@@ -33,7 +33,6 @@ export const Home = () => {
 
   useEffect(() => {
     if (!isRefetching && data) {
-      console.log("rodou aqui");
       setUsers((prevUsers) => [...prevUsers, ...data.users]);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps

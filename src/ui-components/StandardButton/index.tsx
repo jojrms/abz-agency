@@ -9,7 +9,7 @@ export const StandardButton: React.FC<StandardButtonProps> = ({
   ...props
 }) => {
   return (
-    <button {...props}>
+    <button {...props} className="standard-button">
       <p>{title}</p>
     </button>
   );
