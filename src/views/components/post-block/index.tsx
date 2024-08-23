@@ -30,10 +30,6 @@ const postRequestSchema = Yup.object({
     .min(1, "position must be 1 or greater"),
   photo: Yup.mixed()
     .required("photo is required")
-    .test("fileSize", "The file is too large", (value) => {
-      const fileList = value as FileList;
-      return fileList && fileList[0] && fileList[0].size <= 5 * 1024 * 1024; // 5MB
-    })
     .test("fileType", "Unsupported file format", (value) => {
       const fileList = value as FileList;
       return (
@@ -48,7 +44,13 @@ type PostBlockProps = {
   refetchGetUsers: (refetchPage: number) => void;
 };
 export const PostBlock = ({ refetchGetUsers }: PostBlockProps) => {
-  const { register, handleSubmit, reset, watch } = useForm<NewUserProps>({
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+    reset,
+    watch,
+  } = useForm<NewUserProps>({
     resolver: yupResolver(postRequestSchema),
     defaultValues: {
       name: "",
@@ -125,12 +127,18 @@ export const PostBlock = ({ refetchGetUsers }: PostBlockProps) => {
             <label htmlFor="input" className={"float-label"}>
               Your name
             </label>
+            {errors.name && (
+              <p className="signup-error-text">{errors.name.message}</p>
+            )}
           </div>
           <div className="div-input">
             <input type="email" {...register("email")} />
             <label htmlFor="input" className={"float-label"}>
               Email
             </label>
+            {errors.email && (
+              <p className="signup-error-text">{errors.email.message}</p>
+            )}
           </div>
           <div className="div-input">
             <input type="tel" {...register("phone")} />
@@ -157,6 +165,9 @@ export const PostBlock = ({ refetchGetUsers }: PostBlockProps) => {
                 </div>
               ))
             )}
+            {errors.position_id && (
+              <p className="signup-error-text">{errors.position_id.message}</p>
+            )}
           </div>
 
           <div className="div-add-photo">
@@ -169,6 +180,9 @@ export const PostBlock = ({ refetchGetUsers }: PostBlockProps) => {
                 <p>Upload your photo</p>
               )}
             </span>
+            {errors.photo && (
+              <p className="signup-error-text">{errors.photo.message}</p>
+            )}
           </div>
           <StandardButton title="Sign up" type="submit" />
         </form>

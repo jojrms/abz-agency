@@ -57,5 +57,13 @@
         button{
             margin: auto;
         };
+
+        .signup-error-text{
+            text-align: initial;
+            margin-top: 52px;
+            position: absolute;
+            color: red;
+            @include text-styles($input-helper-text, 400);
+        }
     };
 }
