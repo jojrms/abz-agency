@@ -1,0 +1,45 @@
+.skeleton{
+
+    .skeleton-photo{
+        display: grid;
+        width: 70px;
+        height: 70px;
+        border-radius: 100%;
+        background: #ddd;
+        margin: auto auto 20px auto;
+        animation: skeleton-loading 1.5s infinite ease-in-out;
+    };
+
+    .skeleton-name{
+        width: 80%;
+        margin-bottom: 20px;
+    };
+    .skeleton-position{
+        width: 85%;
+    };
+    .skeleton-email{
+        width: 200px;
+        margin: 5px auto;
+    };
+
+    div{
+        width: 50%;
+        height: 15px;
+        border-radius: 10px;
+        background: #ddd;
+        margin: auto;
+        animation: skeleton-loading 1.5s infinite ease-in-out;
+    }
+}
+
+@keyframes skeleton-loading {
+    0% {
+      background-color: #ddd;
+    }
+    50% {
+      background-color: #ccc;
+    }
+    100% {
+      background-color: #ddd;
+    }
+  }
