@@ -4,6 +4,7 @@ import {
   StandardCardGrid,
   StandardUserCard,
 } from "../../../ui-components/StandardCard";
+import { randomSkeletonQuantity } from "../../../utils/loadings";
 import "./style.scss";
 
 type GetBlockProps = {
@@ -19,22 +20,28 @@ export const GetBlock = ({ isLoading, users, nextPage }: GetBlockProps) => {
         <h1>Working with GET request</h1>
         <>
           <StandardCardGrid>
-            {isLoading ? (
-              <p>loading...</p>
-            ) : (
-              users.map((user, index) => {
-                return (
-                  <StandardUserCard
-                    key={index}
-                    name={user.name}
-                    position={user.position}
-                    email={user.email}
-                    phone={user.phone}
-                    photo={user.photo}
-                  />
-                );
-              })
-            )}
+            {isLoading && users.length === 0
+              ? randomSkeletonQuantity(
+                  <article className="skeleton">
+                    <span className="skeleton-photo" />
+                    <div className="skeleton-name" />
+                    <div className="skeleton-position" />
+                    <div className="skeleton-email" />
+                    <div className="skeleton-phone" />
+                  </article>
+                )
+              : users.map((user, index) => {
+                  return (
+                    <StandardUserCard
+                      key={index}
+                      name={user.name}
+                      position={user.position}
+                      email={user.email}
+                      phone={user.phone}
+                      photo={user.photo}
+                    />
+                  );
+                })}
           </StandardCardGrid>
           <StandardButton title="Show more" onClick={() => nextPage()} />
         </>
