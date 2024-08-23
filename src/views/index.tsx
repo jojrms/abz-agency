@@ -16,7 +16,7 @@ export const Home = () => {
   const [users, setUsers] = useState<UserProps[]>([]);
 
   // SERVICES
-  const { data, isLoading, refetch, nextPage } = useUsers();
+  const { data, isLoading, isRefetching, refetch, nextPage } = useUsers();
 
   // FUNCTIONS
   const scrollToElement = (elementId: string) => {
@@ -26,10 +26,17 @@ export const Home = () => {
     }
   };
 
+  const refetchGetFunction = () => {
+    setUsers([]);
+    refetch(1);
+  };
+
   useEffect(() => {
-    if (data) {
+    if (!isRefetching && data) {
+      console.log('rodou aqui');
       setUsers((prevUsers) => [...prevUsers, ...data.users]);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [data]);
 
   return (
@@ -52,7 +59,7 @@ export const Home = () => {
       <div className="div-sections">
         <FirstSection />
         <GetBlock users={users} isLoading={isLoading} nextPage={nextPage} />
-        <PostBlock refetchGetUsers={refetch} />
+        <PostBlock refetchGetUsers={refetchGetFunction} />
       </div>
     </main>
   );

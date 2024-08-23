@@ -45,7 +45,7 @@ const postRequestSchema = Yup.object({
 }) as Yup.ObjectSchema<NewUserProps>;
 
 type PostBlockProps = {
-  refetchGetUsers: () => void;
+  refetchGetUsers: (refetchPage: number) => void;
 };
 export const PostBlock = ({ refetchGetUsers }: PostBlockProps) => {
   const { register, handleSubmit, reset, watch } = useForm<NewUserProps>({
@@ -111,7 +111,7 @@ export const PostBlock = ({ refetchGetUsers }: PostBlockProps) => {
     const newUser = await createUserFunction(data);
     if (newUser?.success) {
       reset();
-      refetchGetUsers();
+      refetchGetUsers(1);
     }
   };
 

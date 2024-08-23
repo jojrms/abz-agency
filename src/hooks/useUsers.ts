@@ -28,10 +28,12 @@ export const fetchUserToken = async (): Promise<void> => {
 export const useUsers = () => {
     const [page, setPage] = useState(1);
     
-    const { data, error, isFetching, isLoading, isError, refetch } = useQuery<GetUsersProps>(
+    const { data, error, isFetching, isLoading, isError, refetch, isRefetching } = useQuery<GetUsersProps>(
       ['users', page], 
       () => fetchUsers(page), 
-     
+      {
+        keepPreviousData: true, 
+      }
     );
 
     const nextPage = () => {
@@ -39,14 +41,20 @@ export const useUsers = () => {
           setPage(prevPage => prevPage + 1);
         }
     };
+
+    const fetchPage = (refetchPage: number) => {
+      setPage(refetchPage);
+      refetch();
+    };
   
     return {
       data: data,
       error,
       isFetching,
+      isRefetching,
       isLoading,
       isError,
-      refetch,
+      refetch: fetchPage,
       nextPage
     };
 };
