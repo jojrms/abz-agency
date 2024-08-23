@@ -1,0 +1,61 @@
+@import '../../../styles/main.scss';
+
+.post-block{
+    width: 100%;
+
+    .div-add-photo{
+        width: 100%;
+        display: flex;
+
+        #input-file{
+            display: none
+        };
+
+        button{
+            height: auto;
+            margin: 0;
+            border-radius: 4px 0px 0px 4px;
+            background: #fff;
+            border: 1px solid $black-87;
+
+            input{
+                position: absolute;
+                opacity: 0;
+            };
+        };
+
+        span{
+            width: 100%;
+            text-align: initial;
+            padding: 14px 15px;
+            border: 1px solid $border;
+            border-radius: 0px 4px 4px 0px;
+
+            p{
+                color: $placeholder;
+            };
+        };
+        
+    };
+
+    form{
+        display: grid;
+        max-width: 380px;
+        margin: auto;
+        padding: 50px 0px;
+        gap: 50px;
+
+        .div-position-grid{
+            display: grid;
+            gap: 7px;
+
+            & :first-child{
+                margin-bottom: 4px;
+            }
+        };
+
+        button{
+            margin: auto;
+        };
+    };
+}

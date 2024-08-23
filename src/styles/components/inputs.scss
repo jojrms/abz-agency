@@ -1,0 +1,102 @@
+input{
+    @include text-styles($p1, 400);
+    border-radius: 4px;
+    border: 1px solid $border;
+    background: transparent;
+    padding: 14px 16px;
+    color: $black-87;
+
+    &:focus-visible{
+        outline: none;
+    }
+
+    &::placeholder{
+        color: $placeholder;
+        transition: 0.1s ease all;
+    };
+
+    &:focus::placeholder{
+        color: transparent;
+    };
+};
+
+.div-input{
+    width: 100%;
+    display: grid;
+};
+
+label{
+    @include text-styles($input-label, 400);
+    position: absolute;
+    color: #999;
+    pointer-events: none;
+    transition: 0.2s ease all;
+    margin: 15px 0px 0px 17px;
+    padding: 0px 4px;
+    opacity: 0;
+};
+
+.div-input-radio{
+    display: flex;
+    gap: 12px;
+    
+    input{
+        width: 20px;
+        height: 20px;
+        z-index: 2;
+        padding: 0px;
+        margin: 0px;
+        opacity: 0;
+        cursor: pointer;
+
+        &:checked + .custom-radio{
+            border-color: $secondary-color
+        };
+        &:checked + .custom-radio::after {
+            content: '';
+            width: 10px;
+            height: 10px;
+            border-radius: 100%;
+            background-color: $secondary-color;
+            margin: auto;
+          }
+    };
+
+    label{
+        opacity: 1;
+        margin: 0px;
+        padding: 0px;
+        position: relative;
+        color: $black-87;
+    };
+
+    .custom-radio{
+        width: 20px;
+        height: 20px;
+        position: absolute;
+        z-index: 0;
+        border-radius: 100%;
+        border: 1px solid $border;
+        display: grid;
+    }
+};
+
+.div-input-file{
+    color: transparent;
+};
+
+input:focus + label,
+input:not(:placeholder-shown) + label {
+    background: $background-color;
+    color: $placeholder;
+    margin: -10px 0px 0px 12px;
+    opacity: 1;
+};
+
+.p-helper-text{
+    width: fit-content;
+    line-height: 14px;
+   @include text-styles($input-helper-text, 400);
+   color: $placeholder; 
+   margin: 4px 0px 0px 16px;
+}
