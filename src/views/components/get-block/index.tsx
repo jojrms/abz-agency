@@ -23,10 +23,10 @@ export const GetBlock = ({
         <h1>Working with GET request</h1>
         <>
           <StandardCardGrid>
-            {users.map((user) => {
+            {users.map((user, index) => {
               return (
                 <StandardUserCard
-                  key={0}
+                  key={index}
                   name={user.name}
                   position={user.position}
                   email={user.email}
