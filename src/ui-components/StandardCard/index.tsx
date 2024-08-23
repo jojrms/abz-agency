@@ -16,7 +16,7 @@ export const StandardUserCard = ({
   photo,
 }: StandardUserCardProps) => {
   return (
-    <article>
+    <article className="user-card">
       <figure>
         <img src={photo} width={70} height={70} />
       </figure>
