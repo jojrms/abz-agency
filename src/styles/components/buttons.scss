@@ -1,0 +1,35 @@
+@import '../settings/variables.scss';
+@import './texts.scss';
+
+button{
+    width: fit-content;
+    height: fit-content;
+    border: none;
+    cursor: pointer;
+    background: $primary-color;
+    border-radius: 80px;
+    color: $black-80;
+    padding: 4px 18px;
+    transition: background-color 0.3s ease;
+    @include text-styles($p1, 400);
+
+    &:disabled,
+    &[disabled], &:disabled:hover {
+        background-color: $disabled-button;
+        color: #fff;
+        cursor: auto;
+    }
+    
+    &:hover {
+        background: #FFE302
+    };
+
+    & p{
+        margin: 0
+    };
+};
+
+.div-buttons-grid{
+    display: flex;
+    gap: 8px;
+};
