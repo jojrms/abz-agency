@@ -1,5 +1,13 @@
 import { AxiosResponse } from "axios";
 
+export type NewUserProps = {
+    name: string;
+    email: string;
+    phone: string;
+    position_id: number;
+    photo: FileList | [];
+}
+
 export type UserProps = {
     id: string,
     name: string,
@@ -9,7 +17,6 @@ export type UserProps = {
     position_id: number,
     registration_timestamp: number,
     photo: string,
-    
 }
 export type GetUsersProps = {
     success: boolean,
@@ -24,5 +31,17 @@ export type GetUsersProps = {
     users: UserProps[]
 }
 
+export type PositionProps = {
+    id: number,
+    name: string
+}
+
+export type GetUserPositionsProps = {
+    success: boolean,
+    positions: PositionProps[]
+}
+
 export type GetUsersResult = Promise<AxiosResponse<GetUsersProps>>;
+export type GetUserToken = Promise<AxiosResponse<void>>;
 export type GetUserByIdResult = Promise<AxiosResponse<UserProps>>;
+export type GetUserPositionsResult = Promise<AxiosResponse<GetUserPositionsProps>>;
