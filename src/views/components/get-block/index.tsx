@@ -7,39 +7,36 @@ import {
 import "./style.scss";
 
 type GetBlockProps = {
+  isLoading: boolean;
   users: UserProps[];
-  userGetPage: number;
-  setUserGetPage: (e: number) => void;
+  nextPage: () => void;
 };
 
-export const GetBlock = ({
-  users,
-  userGetPage,
-  setUserGetPage,
-}: GetBlockProps) => {
+export const GetBlock = ({ isLoading, users, nextPage }: GetBlockProps) => {
   return (
     <section id="getBlock" className="get-block">
       <div>
         <h1>Working with GET request</h1>
         <>
           <StandardCardGrid>
-            {users.map((user, index) => {
-              return (
-                <StandardUserCard
-                  key={index}
-                  name={user.name}
-                  position={user.position}
-                  email={user.email}
-                  phone={user.phone}
-                  photo={user.photo}
-                />
-              );
-            })}
+            {isLoading ? (
+              <p>loading...</p>
+            ) : (
+              users.map((user, index) => {
+                return (
+                  <StandardUserCard
+                    key={index}
+                    name={user.name}
+                    position={user.position}
+                    email={user.email}
+                    phone={user.phone}
+                    photo={user.photo}
+                  />
+                );
+              })
+            )}
           </StandardCardGrid>
-          <StandardButton
-            title="Show more"
-            onClick={() => setUserGetPage(userGetPage + 1)}
-          />
+          <StandardButton title="Show more" onClick={() => nextPage()} />
         </>
       </div>
     </section>

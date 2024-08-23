@@ -4,10 +4,10 @@ import * as Yup from "yup";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import axios from "axios";
-import { positionsService, usersService } from "../../../services/users";
-import { useEffect, useState } from "react";
-import { NewUserProps, PositionProps } from "../../../types/users";
+import { usersService } from "../../../services/users";
+import { NewUserProps } from "../../../types/users";
 import "./style.scss";
+import { useUserPositions } from "../../../hooks/getPositions";
 
 const postRequestSchema = Yup.object({
   name: Yup.string()
@@ -44,7 +44,10 @@ const postRequestSchema = Yup.object({
     }),
 }) as Yup.ObjectSchema<NewUserProps>;
 
-export const PostBlock = () => {
+type PostBlockProps = {
+  refetchGetUsers: () => void;
+};
+export const PostBlock = ({ refetchGetUsers }: PostBlockProps) => {
   const { register, handleSubmit, reset, watch } = useForm<NewUserProps>({
     resolver: yupResolver(postRequestSchema),
     defaultValues: {
@@ -58,21 +61,9 @@ export const PostBlock = () => {
 
   const watchPhoto = watch("photo");
 
-  // STATES
-  const [positions, setPositions] = useState<PositionProps[]>([]);
-
   // SERVICES
-  const { getUserPositions } = positionsService();
   const { getToken } = usersService();
-
-  // FUNCTIONS
-  const getUserPositionsFunction = async () => {
-    const { data } = await getUserPositions();
-
-    if (data) {
-      setPositions((prevUsers) => [...prevUsers, ...data.positions]);
-    }
-  };
+  const { data, isLoading } = useUserPositions();
 
   const loadToken = async () => {
     try {
@@ -120,13 +111,9 @@ export const PostBlock = () => {
     const newUser = await createUserFunction(data);
     if (newUser?.success) {
       reset();
+      refetchGetUsers();
     }
   };
-
-  useEffect(() => {
-    getUserPositionsFunction();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
 
   return (
     <section id="postBlock" className="post-block">
@@ -155,17 +142,21 @@ export const PostBlock = () => {
 
           <div className="div-position-grid">
             <p>Select your position</p>
-            {positions.map((position, index) => (
-              <div className="div-input div-input-radio" key={index}>
-                <input
-                  type="radio"
-                  value={position.id}
-                  {...register("position_id")}
-                />
-                <span className="custom-radio" />
-                <label htmlFor="input">{position.name}</label>
-              </div>
-            ))}
+            {isLoading ? (
+              <p>loading...</p>
+            ) : (
+              data?.positions.map((position, index) => (
+                <div className="div-input div-input-radio" key={index}>
+                  <input
+                    type="radio"
+                    value={position.id}
+                    {...register("position_id")}
+                  />
+                  <span className="custom-radio" />
+                  <label htmlFor="input">{position.name}</label>
+                </div>
+              ))
+            )}
           </div>
 
           <div className="div-add-photo">
