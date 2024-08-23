@@ -9,6 +9,7 @@ import { GetBlock } from "./components/get-block";
 import { usersService } from "../services/users";
 import { useEffect, useState } from "react";
 import { UserProps } from "../types/users";
+import { PostBlock } from "./components/post-block";
 
 export const Home = () => {
   // STATES
@@ -63,6 +64,7 @@ export const Home = () => {
           userGetPage={userGetPage}
           setUserGetPage={setUserGetPage}
         />
+        <PostBlock />
       </div>
     </main>
   );
