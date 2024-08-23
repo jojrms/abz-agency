@@ -8,6 +8,7 @@ import { usersService } from "../../../services/users";
 import { NewUserProps } from "../../../types/users";
 import "./style.scss";
 import { useUserPositions } from "../../../hooks/getPositions";
+import { useState } from "react";
 
 const postRequestSchema = Yup.object({
   name: Yup.string()
@@ -63,6 +64,9 @@ export const PostBlock = ({ refetchGetUsers }: PostBlockProps) => {
 
   const watchPhoto = watch("photo");
 
+  // STATES
+  const [isLoadingNewUser, setIsLoadingNewUser] = useState<boolean>(false);
+
   // SERVICES
   const { getToken } = usersService();
   const { data, isLoading } = useUserPositions();
@@ -85,6 +89,7 @@ export const PostBlock = ({ refetchGetUsers }: PostBlockProps) => {
 
   const createUserFunction = async (formData: NewUserProps) => {
     try {
+      setIsLoadingNewUser(true);
       loadToken();
       const token = localStorage.getItem("authToken");
 
@@ -184,7 +189,11 @@ export const PostBlock = ({ refetchGetUsers }: PostBlockProps) => {
               <p className="signup-error-text">{errors.photo.message}</p>
             )}
           </div>
-          <StandardButton title="Sign up" type="submit" />
+          <StandardButton
+            title="Sign up"
+            type="submit"
+            disabled={isLoadingNewUser}
+          />
         </form>
       </div>
     </section>

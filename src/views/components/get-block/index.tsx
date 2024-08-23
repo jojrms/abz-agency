@@ -14,6 +14,7 @@ type GetBlockProps = {
 };
 
 export const GetBlock = ({ isLoading, users, nextPage }: GetBlockProps) => {
+
   return (
     <section id="getBlock" className="get-block">
       <div>
