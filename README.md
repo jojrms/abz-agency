@@ -6,7 +6,7 @@ The development used the React, Typescript, and Vite stack, along with SASS (Scs
 It was hosted on Vercel.
 
 * [Page functionalities](#page-funcionalities)
-* [Libraries, stacks, and other information](#libaried-stacks-and-other-information)
+* [Libraries and other information](#libaried-and-other-information)
 * [Folder structure](#folder-structure)
 
 ## Page functionalities
@@ -18,7 +18,7 @@ Block responsible for performing the GET request for the user list. By default, 
 #### POST Block
 Area with the form for submitting a new user. All fields are required. Upon submission, a token will be generated and added to the request. While the action is in progress, the button is disabled to prevent duplicates or errors. Once completed, if successful, a success toast is shown to the user, the user list above is updated, and it returns to its initial state with the new user in position 0.
 
-## 🛠️ Libraries, stacks, and other information
+## 🛠️ Libraries and other information
 
 - FORMS: `react-hook-form` | `@hookform/resolvers` | `yup`
 - REQUESTS: `axios` | `react-query`
