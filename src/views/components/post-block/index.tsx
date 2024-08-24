@@ -32,6 +32,14 @@ const postRequestSchema = Yup.object({
     .min(1, "position must be 1 or greater"),
   photo: Yup.mixed()
     .required("photo is required")
+    .test("fileSize", "File is too large. Max size is 5MB", (value) => {
+      const fileList = value as FileList;
+      return (
+        fileList &&
+        fileList[0] &&
+        fileList[0].size <= 5 * 1024 * 1024 
+      );
+    })
     .test("fileType", "Unsupported file format", (value) => {
       const fileList = value as FileList;
       return (
