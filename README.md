@@ -1,50 +1,67 @@
-# React + TypeScript + Vite
+# TestTask Project
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Project developed for the Front-end developer position in Abz Agency. It was developed based on a mockup provided in Figma, route consumption documentation in Swagger, and a document with information to be followed.
+The development used the React, Typescript, and Vite stack, along with SASS (Scss) for styling. The layout is responsive, with a maximum width of 1170px, as specified in the design.
 
-Currently, two official plugins are available:
+It was hosted on Vercel.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Libraries, stacks, and other information
 
-## Expanding the ESLint configuration
+- FORMS: react-hook-form | @hookform/resolvers | yup
+- REQUESTS: axios | react-query
+- TOAST: react-toastify 
+- STYLE: SASS (.scss)
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+## Folder structure
 
-- Configure the top-level `parserOptions` property like this:
-
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
-
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
-
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
-
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
+|
+├── src/
+|    ├── assets                      # Images and icons folder
+|    |
+|    ├── config
+|    |      └── apiConfig.ts         # File with the Axios instance
+|    |
+|    ├── hooks                  
+|    |      ├── usePositions.ts      # Hook for user positions
+|    |      └── useUsers.ts          # Hook for users list
+|    |
+|    ├── services                  
+|    |      └── users.ts             # User services (tokens, get 
+|    |                                               user by id and
+|    |                                               others) 
+|    ├── styles                  
+|    |    ├── components
+|    |    |      └── inputs.scss     # Global inputs style
+|    |    |      
+|    |    ├── settings
+|    |    |      └── variables.scss  # Global style variables, like 
+|    |    |                           colors
+|    |    |      
+|    |    └── main.scss             # Global style (body, root, etc)
+|    |                                and imports
+|    ├── types                  
+|    |      └── users.ts          # Objects and requests props 
+|    | 
+|    ├── ui-component                  
+|    |      └── Standard...
+|    |             ├── index.tsx  # Global component structure  
+|    |             └── style.tsx  # Global component style  
+|    |
+|    ├── utils
+|    |      └── loadings.tsx      # Loading utils, like skeleton 
+|    |                              generation
+|    |
+|    ├── views
+|    |    ├── components
+|    |    |       └── get-block           
+|    |    |               ├── index.tsx   # Get Block component 
+|    |    |               |                 structure           
+|    |    |               └── style.tsx   # Get Block component 
+|    |    |                                 style         
+|    |    |                        
+|    |    ├── styles.tsx          # Index styles
+|    |    └── index.tsx           # Base of the displayed page, where 
+|    |                             the imports are located
+|    |
+|    ├── App.tsx                  # Main component, with the providers
+|    └── main.tsx
