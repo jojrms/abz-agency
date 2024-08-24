@@ -132,8 +132,8 @@ export const PostBlock = ({ refetchGetUsers }: PostBlockProps) => {
         <h2>Working with POST request</h2>
         <form onSubmit={handleSubmit(onSubmitForm)}>
           <div className="div-input">
-            <input type="text" {...register("name")} />
-            <label htmlFor="input" className={"float-label"}>
+            <input type="text" id="name" {...register("name")} />
+            <label htmlFor="name"  className={"float-label"}>
               Your name
             </label>
             {errors.name && (
@@ -141,8 +141,8 @@ export const PostBlock = ({ refetchGetUsers }: PostBlockProps) => {
             )}
           </div>
           <div className="div-input">
-            <input type="email" {...register("email")} />
-            <label htmlFor="input" className={"float-label"}>
+            <input type="email" id="email" {...register("email")} />
+            <label htmlFor="email" className={"float-label"}>
               Email
             </label>
             {errors.email && (
@@ -150,8 +150,8 @@ export const PostBlock = ({ refetchGetUsers }: PostBlockProps) => {
             )}
           </div>
           <div className="div-input">
-            <input type="tel" {...register("phone")} />
-            <label htmlFor="input" className={"float-label"}>
+            <input type="tel" id="tel" {...register("phone")} />
+            <label htmlFor="tel" className={"float-label"}>
               Phone
             </label>
             <p className="p-helper-text">+38 (XXX) XXX - XX - XX</p>
@@ -165,12 +165,13 @@ export const PostBlock = ({ refetchGetUsers }: PostBlockProps) => {
               data?.positions.map((position, index) => (
                 <div className="div-input div-input-radio" key={index}>
                   <input
+                    id={position.name}
                     type="radio"
                     value={position.id}
                     {...register("position_id")}
                   />
                   <span className="custom-radio" />
-                  <label htmlFor="input">{position.name}</label>
+                  <label htmlFor={position.name}>{position.name}</label>
                 </div>
               ))
             )}

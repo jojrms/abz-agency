@@ -1,3 +1,6 @@
+@import './texts.scss';
+@import '../settings/variables.scss';
+
 input{
     @include text-styles($p1, 400);
     border-radius: 4px;

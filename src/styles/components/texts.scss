@@ -1,3 +1,5 @@
+@import '../settings/variables.scss';
+
 @mixin text-styles($font-size, $font-weight) {
     font-size: $font-size;
     font-weight: $font-weight;

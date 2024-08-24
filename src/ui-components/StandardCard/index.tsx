@@ -20,7 +20,7 @@ export const StandardUserCard = ({
   return (
     <article className="user-card">
       <figure>
-        <img src={photo} width={70} height={70} />
+        <img alt={name} src={photo} width={70} height={70} />
       </figure>
       <div className="content-name">
         <StandardTooltip label={name}>

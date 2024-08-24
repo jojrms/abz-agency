@@ -42,7 +42,7 @@ export const Home = () => {
     <main>
       <header>
         <div>
-          <img src={testTaskUrl} />
+          <img alt="test-task-icon" src={testTaskUrl} width={104} height={26}/>
           <StandardButtonGrid>
             <StandardButton
               title="Users"
