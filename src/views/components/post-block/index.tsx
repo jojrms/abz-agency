@@ -72,14 +72,6 @@ export const PostBlock = ({ refetchGetUsers }: PostBlockProps) => {
   const { getToken } = usersService();
   const { data, isLoading } = useUserPositions();
 
-  const loadToken = async () => {
-    try {
-      await getToken();
-    } catch (error) {
-      console.error("Error loading token:", error);
-    }
-  };
-
   const handleButtonClick = (event: React.MouseEvent<HTMLButtonElement>) => {
     event.preventDefault();
     const inputFile = document.getElementById("input-file");
@@ -91,14 +83,13 @@ export const PostBlock = ({ refetchGetUsers }: PostBlockProps) => {
   const createUserFunction = async (formData: NewUserProps) => {
     try {
       setIsLoadingNewUser(true);
-      loadToken();
-      const token = localStorage.getItem("authToken");
+      const response = await getToken();
 
       const axiosPrivate = axios.create({
         baseURL: API_BASE_URL,
         headers: {
           "Content-Type": "multipart/form-data",
-          Token: token,
+          Token: response.data.token,
         },
       });
       const formDataBody = {

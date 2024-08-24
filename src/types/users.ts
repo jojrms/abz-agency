@@ -41,7 +41,12 @@ export type GetUserPositionsProps = {
     positions: PositionProps[]
 }
 
+export type GetTokenProps = {
+    success: boolean,
+    token: string
+}
+
 export type GetUsersResult = Promise<AxiosResponse<GetUsersProps>>;
-export type GetUserToken = Promise<AxiosResponse<void>>;
+export type GetUserToken = Promise<AxiosResponse<GetTokenProps>>;
 export type GetUserByIdResult = Promise<AxiosResponse<UserProps>>;
 export type GetUserPositionsResult = Promise<AxiosResponse<GetUserPositionsProps>>;
