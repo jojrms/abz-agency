@@ -1,4 +1,5 @@
 import React, { ButtonHTMLAttributes } from "react";
+import './style.scss';
 
 type StandardButtonProps = ButtonHTMLAttributes<HTMLButtonElement> & {
   title: string;

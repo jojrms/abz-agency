@@ -1,5 +1,7 @@
 import React from "react";
 import { StandardTooltip } from "../StandardTooltip";
+import './style.scss';
+
 type StandardUserCardProps = {
   name: string;
   position: string;

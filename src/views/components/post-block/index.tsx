@@ -7,7 +7,7 @@ import axios from "axios";
 import { usersService } from "../../../services/users";
 import { NewUserProps } from "../../../types/users";
 import "./style.scss";
-import { useUserPositions } from "../../../hooks/getPositions";
+import { useUserPositions } from "../../../hooks/usePositions";
 import { useState } from "react";
 import { toast } from "react-toastify";
 
