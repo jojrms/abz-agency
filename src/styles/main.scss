@@ -14,10 +14,6 @@ body{
     overflow-x: hidden;
 };
 
-body * {
-    font-family: $font-family-primary;
-};
-
 main > *:not(header){
     max-width: 1170px;
     margin: 0 auto;
