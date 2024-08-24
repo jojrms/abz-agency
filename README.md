@@ -14,54 +14,43 @@ It was hosted on Vercel.
 
 ## Folder structure
 
-|
-├── src/
-|    ├── assets                      # Images and icons folder
-|    |
-|    ├── config
-|    |      └── apiConfig.ts         # File with the Axios instance
-|    |
-|    ├── hooks                  
-|    |      ├── usePositions.ts      # Hook for user positions
-|    |      └── useUsers.ts          # Hook for users list
-|    |
-|    ├── services                  
-|    |      └── users.ts             # User services (tokens, get 
-|    |                                               user by id and
-|    |                                               others) 
-|    ├── styles                  
-|    |    ├── components
-|    |    |      └── inputs.scss     # Global inputs style
-|    |    |      
-|    |    ├── settings
-|    |    |      └── variables.scss  # Global style variables, like 
-|    |    |                           colors
-|    |    |      
-|    |    └── main.scss             # Global style (body, root, etc)
-|    |                                and imports
-|    ├── types                  
-|    |      └── users.ts          # Objects and requests props 
-|    | 
-|    ├── ui-component                  
-|    |      └── Standard...
-|    |             ├── index.tsx  # Global component structure  
-|    |             └── style.tsx  # Global component style  
-|    |
-|    ├── utils
-|    |      └── loadings.tsx      # Loading utils, like skeleton 
-|    |                              generation
-|    |
-|    ├── views
-|    |    ├── components
-|    |    |       └── get-block           
-|    |    |               ├── index.tsx   # Get Block component 
-|    |    |               |                 structure           
-|    |    |               └── style.tsx   # Get Block component 
-|    |    |                                 style         
-|    |    |                        
-|    |    ├── styles.tsx          # Index styles
-|    |    └── index.tsx           # Base of the displayed page, where 
-|    |                             the imports are located
-|    |
-|    ├── App.tsx                  # Main component, with the providers
-|    └── main.tsx
+src/
+├── assets/                   # Images and icons folder
+│
+├── config/
+│   └── apiConfig.ts          # File with the Axios instance
+│
+├── hooks/
+│   ├── usePositions.ts       # Hook for user positions
+│   └── useUsers.ts           # Hook for users list
+│
+├── services/
+│   └── users.ts              # User services (tokens, get user by id, etc.)
+│
+├── styles/
+│   ├── components/           # Component-specific styles
+│   │   └── inputs.scss       # Global inputs style
+│   ├── settings/             # Global style variables
+│   │   └── variables.scss    # Global style variables, like colors
+│   └── main.scss             # Global style (body, root, etc.) and imports
+│
+├── types/
+│   └── users.ts              # Objects and request props
+│
+├── ui-component/
+│   ├── index.tsx             # Global component structure
+│   └── style.tsx             # Global component style
+│
+├── utils/
+│   └── loadings.tsx          # Loading utils, like skeleton generation
+│
+├── views/
+│   ├── components/          # View-specific components
+│   │   └── get-block/
+│   │       ├── index.tsx    # Get Block component structure
+│   │       └── style.tsx    # Get Block component style
+│   ├── styles.tsx           # Index styles
+│   └── index.tsx            # Base of the displayed page, where the imports are located
+│
+├── App.tsx                  # Main component, with the providers
+└── main.tsx                 # Entry point of the application
